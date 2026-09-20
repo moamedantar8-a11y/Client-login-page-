@@ -78,10 +78,12 @@
 
         .star-rating { display: flex; gap: 5px; font-size: 20px; cursor: pointer; color: var(--warning); }
 
-        /* تنسيق الأسئلة الشائعة الجديدة */
         .faq-item { margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
         .faq-item summary { color: var(--text-main); font-weight: 500; font-size: 14px; cursor: pointer; margin-bottom: 4px; }
         .faq-item p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+        .content-section { display: none; }
+        .content-section.active-section { display: block; }
 
         .btn-main { background: var(--accent); color: #0f172a; border: none; padding: 10px 16px; border-radius: 8px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; font-size: 14px; }
         .btn-outline { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 14px; border-radius: 8px; cursor: pointer; }
@@ -109,14 +111,15 @@
     <!-- 2. لوحة التحكم -->
     <div id="dashboardSection" class="dashboard-container">
         
+        <!-- القائمة الجانبية التفاعلية -->
         <aside class="sidebar">
             <div>
                 <div class="sidebar-brand">MK CREATIVE</div>
                 <ul class="sidebar-menu">
-                    <li class="active">📊 لوحة القيادة</li>
-                    <li>📂 مشاريعي</li>
-                    <li>💬 الدعم الفني</li>
-                    <li>⚙️ الإعدادات</li>
+                    <li class="active" onclick="switchSection('dashboard', this)">📊 لوحة القيادة</li>
+                    <li onclick="switchSection('projects', this)">📂 مشاريعي</li>
+                    <li onclick="switchSection('support', this)">💬 الدعم الفني</li>
+                    <li onclick="switchSection('settings', this)">⚙️ الإعدادات</li>
                 </ul>
             </div>
             <div>
@@ -124,6 +127,7 @@
             </div>
         </aside>
 
+        <!-- المحتوى الرئيسي والأقسام -->
         <main class="main-content">
             <div class="top-header">
                 <div>
@@ -136,62 +140,70 @@
                 </div>
             </div>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span>المشروع الحالي</span>
-                    <h3 id="projectName">بوابة العملاء الاحترافية</h3>
-                </div>
-                <div class="stat-card">
-                    <span>حالة سير العمل</span>
-                    <h3 style="color: var(--success);">جاري التطوير والمراجعة</h3>
-                </div>
-                <div class="stat-card">
-                    <span>حالة الأنظمة</span>
-                    <h3 style="color: var(--success);">جميع الخدمات تعمل بكفاءة</h3>
-                </div>
-            </div>
-
-            <div class="grid-2">
-                <div class="card-box">
-                    <h3>
-                        <span>معاينة المشروع وملفاته</span>
-                        <button class="btn-outline" style="font-size: 11px; padding: 4px 8px;" onclick="copyProjectLink()">📋 نسخ الرابط</button>
-                    </h3>
-                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">رابط المستودع أو المعاينة المباشرة:</p>
-                    <a href="https://github.com" id="projectLink" target="_blank" class="btn-main" style="margin-bottom: 15px;">فتح المستودع الخارجي ↗</a>
-                    
-                    <div class="upload-zone" onclick="alert('منطقة رفع الملفات جاهزة لاستقبال ملحقات المشروع.')">
-                        📁 اسحب ملفاتك هنا أو اضغط لرفع الملاحظات والملفات للوكالة
+            <!-- القسم 1: لوحة القيادة -->
+            <div id="section-dashboard" class="content-section active-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span>المشروع الحالي</span>
+                        <h3 id="projectName">بوابة العملاء الاحترافية</h3>
+                    </div>
+                    <div class="stat-card">
+                        <span>حالة سير العمل</span>
+                        <h3 style="color: var(--success);">جاري التطوير والمراجعة</h3>
+                    </div>
+                    <div class="stat-card">
+                        <span>حالة الأنظمة</span>
+                        <h3 style="color: var(--success);">جميع الخدمات تعمل بكفاءة</h3>
                     </div>
                 </div>
 
-                <div class="card-box">
-                    <h3>معلومات التواصل والمسؤول</h3>
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
-                        <div style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #0f172a; font-size: 13px;">MK</div>
-                        <div>
-                            <strong style="display: block; font-size: 14px;">محمد عنتر</strong>
-                            <span style="font-size: 12px; color: var(--text-muted);">إدارة وكالة MK Creative</span>
+                <div class="grid-2">
+                    <div class="card-box">
+                        <h3>
+                            <span>معاينة المشروع وملفاته</span>
+                            <button class="btn-outline" style="font-size: 11px; padding: 4px 8px;" onclick="copyProjectLink()">📋 نسخ الرابط</button>
+                        </h3>
+                        <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">رابط المستودع أو المعاينة المباشرة:</p>
+                        <a href="https://github.com" id="projectLink" target="_blank" class="btn-main" style="margin-bottom: 15px;">فتح المستودع الخارجي ↗</a>
+                        
+                        <div class="upload-zone" onclick="alert('منطقة رفع الملفات جاهزة لاستقبال ملحقات المشروع.')">
+                            📁 اسحب ملفاتك هنا أو اضغط لرفع الملاحظات والملفات للوكالة
                         </div>
                     </div>
-                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">📧 البريد: moamedantar8@gmail.com</p>
-                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">📱 الهاتف: 01559719175</p>
-                    <a href="https://wa.me/201559719175" target="_blank" style="display: block; text-align: center; background: #25d366; color: #fff; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px;">💬 تواصل مباشر عبر واتساب</a>
+
+                    <div class="card-box">
+                        <h3>معلومات التواصل والمسؤول</h3>
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                            <div style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #0f172a; font-size: 13px;">MK</div>
+                            <div>
+                                <strong style="display: block; font-size: 14px;">محمد عنتر</strong>
+                                <span style="font-size: 12px; color: var(--text-muted);">إدارة وكالة MK Creative</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">📧 البريد: moamedantar8@gmail.com</p>
+                        <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">📱 الهاتف: 01559719175</p>
+                        <a href="https://wa.me/201559719175" target="_blank" style="display: block; text-align: center; background: #25d366; color: #fff; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px;">💬 تواصل مباشر عبر واتساب</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="grid-2">
+            <!-- القسم 2: مشاريعي -->
+            <div id="section-projects" class="content-section">
                 <div class="card-box">
-                    <h3>تقييم جودة الخدمة</h3>
-                    <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 10px;">قيم تجربتك مع خدمات الوكالة:</p>
-                    <div class="star-rating" onclick="alert('شكراً لتقييمك!')">
-                        ★ ★ ★ ★ ★
+                    <h3>قائمة مشاريع الوكالة</h3>
+                    <p style="color: var(--text-muted); font-size: 14px; margin-bottom: 15px;">هنا يمكنك متابعة كافة تفاصيل وتحديثات المشاريع البرمجية الخاصة بك:</p>
+                    <div style="background: var(--bg-main); padding: 15px; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <strong style="color: var(--accent); display: block; margin-bottom: 5px;">🚀 بوابة العملاء الاحترافية (SaaS Portal)</strong>
+                        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px;">تطوير واجهة تحكم متكاملة للعملاء مع دعم أنظمة الأكواد والثيمات وإدارة الملفات.</p>
+                        <span style="font-size: 12px; color: var(---success); background: rgba(34,197,94,0.1); padding: 3px 8px; border-radius: 4px;">الحالة: مرحلة التطوير النشط</span>
                     </div>
                 </div>
+            </div>
 
-                <!-- 6 أسئلة شائعة شاملة ومهمة -->
+            <!-- القسم 3: الدعم الفني والأسئلة الشائعة -->
+            <div id="section-support" class="content-section">
                 <div class="card-box">
-                    <h3>الأسئلة الشائعة (FAQ)</h3>
+                    <h3>الأسئلة الشائعة والدعم الفني</h3>
                     
                     <details class="faq-item">
                         <summary>كيف يتم تحديث ملفات المشروع؟</summary>
@@ -205,7 +217,7 @@
 
                     <details class="faq-item">
                         <summary>كيف يمكنني إرسال ملاحظات أو تعديلات؟</summary>
-                        <p>يمكنك استخدام منطقة سحب وإفلات الملفات بالأسفل أو التواصل مباشرة عبر الواتساب لتسجيل الملاحظات.</p>
+                        <p>يمكنك استخدام منطقة سحب وإفلات الملفات بالوحة القيادة أو التواصل مباشرة عبر الواتساب.</p>
                     </details>
 
                     <details class="faq-item">
@@ -224,6 +236,22 @@
                     </details>
                 </div>
             </div>
+
+            <!-- القسم 4: الإعدادات -->
+            <div id="section-settings" class="content-section">
+                <div class="card-box">
+                    <h3>إعدادات الحساب والمنظومة</h3>
+                    <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 15px;">بيانات الحساب المسجلة حالياً:</p>
+                    <div style="font-size: 14px; color: var(--text-main); display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;">
+                        <div>👤 الاسم: <strong>محمد عنتر</strong></div>
+                        <div>📧 البريد الإلكتروني: <strong>moamedantar8@gmail.com</strong></div>
+                        <div>📱 رقم الهاتف: <strong>01559719175</strong></div>
+                        <div>🔑 كود الدخول: <strong>M</strong></div>
+                    </div>
+                    <button class="btn-outline" onclick="logout()">تسجيل الخروج من الجلسة</button>
+                </div>
+            </div>
+
         </main>
     </div>
 
@@ -259,6 +287,18 @@
         function logout() {
             localStorage.removeItem('mk_clean_session');
             location.reload();
+        }
+
+        // دالة تبديل الأقسام عبر القائمة الجانبية
+        function switchSection(sectionId, element) {
+            document.querySelectorAll('.content-section').forEach(sec => {
+                sec.classList.remove('active-section');
+            });
+            document.querySelectorAll('.sidebar-menu li').forEach(li => {
+                li.classList.remove('active');
+            });
+            document.getElementById('section-' + sectionId).classList.add('active-section');
+            element.classList.add('active');
         }
 
         function toggleTheme() {
