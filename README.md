@@ -68,7 +68,7 @@
         .icon-btn { background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-main); width: 38px; height: 38px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
         .icon-btn:hover { border-color: var(--accent); }
         
-        /* البطاقات الإحصائية الحقيقية (حالة المشروع والروابط) */
+        /* البطاقات الإحصائية الحقيقية */
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 25px; }
         .stat-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 18px; border-radius: 12px; }
         .stat-card span { font-size: 13px; color: var(--text-muted); display: block; margin-bottom: 6px; }
@@ -106,7 +106,7 @@
         </div>
     </div>
 
-    <!-- 2. لوحة التحكم (بدون أرقام أو بيانات وهمية) -->
+    <!-- 2. لوحة التحكم -->
     <div id="dashboardSection" class="dashboard-container">
         
         <!-- القائمة الجانبية -->
@@ -138,7 +138,6 @@
                 </div>
             </div>
 
-            <!-- بطاقات معلومات حقيقية ونظيفة -->
             <div class="stats-grid">
                 <div class="stat-card">
                     <span>المشروع الحالي</span>
@@ -169,21 +168,22 @@
                     </div>
                 </div>
 
-                <!-- فريق العمل والدعم -->
+                <!-- فريق العمل وبيانات التواصل الحقيقية -->
                 <div class="card-box">
-                    <h3>فريق العمل المسؤول</h3>
-                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 15px;">
-                        <div style="width: 45px; height: 45px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #0f172a;">MK</div>
+                    <h3>معلومات التواصل والمسؤول</h3>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                        <div style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #0f172a; font-size: 13px;">MK</div>
                         <div>
                             <strong style="display: block; font-size: 14px;">محمد عنتر</strong>
                             <span style="font-size: 12px; color: var(--text-muted);">إدارة وكالة MK Creative</span>
                         </div>
                     </div>
-                    <a href="https://whatsapp.com" target="_blank" style="display: block; text-align: center; background: #25d366; color: #fff; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px;">💬 تواصل مباشر عبر واتساب</a>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">📧 البريد: moamedantar8@gmail.com</p>
+                    <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">📱 الهاتف: 01559719175</p>
+                    <a href="https://wa.me/201559719175" target="_blank" style="display: block; text-align: center; background: #25d366; color: #fff; padding: 10px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 14px;">💬 تواصل مباشر عبر واتساب</a>
                 </div>
             </div>
 
-            <!-- تقييم وأسئلة شائعة خالية من البيانات الوهمية -->
             <div class="grid-2">
                 <div class="card-box">
                     <h3>تقييم جودة الخدمة</h3>
@@ -260,4 +260,4 @@
         }
     </script>
 </body>
-</html> 
+</html>
