@@ -31,7 +31,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, sans-serif; }
         body { background: var(--bg-main); color: var(--text-main); min-height: 100vh; display: flex; justify-content: center; align-items: center; transition: 0.3s; }
 
-        /* شاشة تسجيل الدخول */
         .login-wrapper { width: 100%; max-width: 420px; padding: 20px; }
         .login-card {
             background: var(--bg-card); border: 1px solid var(--border-color);
@@ -50,17 +49,14 @@
         .btn-login:hover { opacity: 0.9; }
         .error-msg { color: var(--danger); font-size: 13px; margin-top: 10px; display: none; }
 
-        /* الداشبورد الاحترافية */
         .dashboard-container { display: none; width: 100vw; height: 100vh; grid-template-columns: 260px 1fr; background: var(--bg-main); }
         
-        /* القائمة الجانبية */
         .sidebar { background: var(--bg-sidebar); border-left: 1px solid var(--border-color); padding: 25px 20px; display: flex; flex-direction: column; justify-content: space-between; }
         .sidebar-brand { font-size: 20px; font-weight: bold; color: var(--accent); margin-bottom: 30px; text-align: center; }
         .sidebar-menu { list-style: none; display: flex; flex-direction: column; gap: 8px; }
         .sidebar-menu li { padding: 12px 15px; border-radius: 8px; color: var(--text-muted); cursor: pointer; font-size: 15px; transition: 0.2s; display: flex; align-items: center; gap: 10px; }
         .sidebar-menu li.active, .sidebar-menu li:hover { background: rgba(56, 189, 248, 0.1); color: var(--accent); font-weight: 500; }
         
-        /* المحتوى الرئيسي */
         .main-content { padding: 25px; overflow-y: auto; }
         .top-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; background: var(--bg-card); padding: 15px 20px; border-radius: 12px; border: 1px solid var(--border-color); }
         
@@ -68,7 +64,6 @@
         .icon-btn { background: var(--bg-main); border: 1px solid var(--border-color); color: var(--text-main); width: 38px; height: 38px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
         .icon-btn:hover { border-color: var(--accent); }
         
-        /* البطاقات الإحصائية الحقيقية */
         .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 25px; }
         .stat-card { background: var(--bg-card); border: 1px solid var(--border-color); padding: 18px; border-radius: 12px; }
         .stat-card span { font-size: 13px; color: var(--text-muted); display: block; margin-bottom: 6px; }
@@ -82,6 +77,11 @@
         .upload-zone:hover { border-color: var(--accent); color: var(--accent); }
 
         .star-rating { display: flex; gap: 5px; font-size: 20px; cursor: pointer; color: var(--warning); }
+
+        /* تنسيق الأسئلة الشائعة الجديدة */
+        .faq-item { margin-bottom: 12px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+        .faq-item summary { color: var(--text-main); font-weight: 500; font-size: 14px; cursor: pointer; margin-bottom: 4px; }
+        .faq-item p { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
 
         .btn-main { background: var(--accent); color: #0f172a; border: none; padding: 10px 16px; border-radius: 8px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; font-size: 14px; }
         .btn-outline { background: transparent; border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 14px; border-radius: 8px; cursor: pointer; }
@@ -109,7 +109,6 @@
     <!-- 2. لوحة التحكم -->
     <div id="dashboardSection" class="dashboard-container">
         
-        <!-- القائمة الجانبية -->
         <aside class="sidebar">
             <div>
                 <div class="sidebar-brand">MK CREATIVE</div>
@@ -125,7 +124,6 @@
             </div>
         </aside>
 
-        <!-- المحتوى الرئيسي -->
         <main class="main-content">
             <div class="top-header">
                 <div>
@@ -154,7 +152,6 @@
             </div>
 
             <div class="grid-2">
-                <!-- إدارة المشروع -->
                 <div class="card-box">
                     <h3>
                         <span>معاينة المشروع وملفاته</span>
@@ -168,7 +165,6 @@
                     </div>
                 </div>
 
-                <!-- فريق العمل وبيانات التواصل الحقيقية -->
                 <div class="card-box">
                     <h3>معلومات التواصل والمسؤول</h3>
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
@@ -193,11 +189,38 @@
                     </div>
                 </div>
 
+                <!-- 6 أسئلة شائعة شاملة ومهمة -->
                 <div class="card-box">
-                    <h3>الأسئلة الشائعة</h3>
-                    <details style="font-size: 13px; color: var(--text-muted); cursor: pointer;">
-                        <summary style="color: var(--text-main); font-weight: 500; margin-bottom: 5px;">كيف يتم تحديث ملفات المشروع؟</summary>
-                        يتم تحديث المستودع ورفع الملفات البرمجية أولاً بأول عبر منصات الوكالة.
+                    <h3>الأسئلة الشائعة (FAQ)</h3>
+                    
+                    <details class="faq-item">
+                        <summary>كيف يتم تحديث ملفات المشروع؟</summary>
+                        <p>يتم تحديث المستودع ورفع الملفات البرمجية أولاً بأول عبر منصات الوكالة ومتابعة التغييرات.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>ما هي أوقات الدعم الفني المتاحة؟</summary>
+                        <p>الدعم المباشر عبر الواتساب متاح لمتابعة الطوارئ والاستفسارات طوال أيام الأسبوع.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>كيف يمكنني إرسال ملاحظات أو تعديلات؟</summary>
+                        <p>يمكنك استخدام منطقة سحب وإفلات الملفات بالأسفل أو التواصل مباشرة عبر الواتساب لتسجيل الملاحظات.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>هل الكود المصدري للمشروع مملوك لي بالكامل؟</summary>
+                        <p>نعم، بعد إتمام أي مشروع يتم تسليم كافة ملفات المصدر (Source Code) والروابط لك بالكامل.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>كيف أتأكد من أمان واستقرار المنظومة؟</summary>
+                        <p>نحرص على استخدام أفضل ممارسات التطوير والبرمجة لضمان استقرار وسرعة الأنظمة بشكل دائم.</p>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>هل توفر الوكالة صيانة دورية للمشاريع؟</summary>
+                        <p>نعم، نقدم الدعم الفني والصيانة المستمرة لضمان عمل المنصات والتطبيقات بكفاءة عالية دون توقف.</p>
                     </details>
                 </div>
             </div>
